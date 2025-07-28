@@ -1,4 +1,4 @@
-# 🌰 Real-Time Cashew Kernel Classification
+# Real-Time Cashew Kernel Classification
 
 A web-based application for real-time classification of cashew kernels using YOLOv5 deep learning model. The application provides both webcam access and image upload functionality for classifying cashew kernels.
 
@@ -9,7 +9,6 @@ A web-based application for real-time classification of cashew kernels using YOL
 - **🤖 YOLOv5 Model**: Advanced deep learning model for accurate classification
 - **🎨 Modern UI**: Beautiful, responsive design with smooth animations
 - **📊 Results Display**: Clear visualization of classification results with confidence scores
-- **📱 Mobile Responsive**: Works seamlessly on desktop and mobile devices
 
 ## Prerequisites
 
