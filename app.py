@@ -171,10 +171,24 @@ def process_image(image_data):
         # Convert annotated image to base64
         annotated_image_b64 = image_to_base64(annotated_image)
         
+        # Calculate model accuracy based on average confidence and detection quality
+        model_accuracy = 0.0
+        if predictions:
+            # Calculate average confidence
+            avg_confidence = sum(pred['confidence'] for pred in predictions) / len(predictions)
+            
+            # Consider high confidence detections (>0.7) as more reliable
+            high_confidence_detections = [pred for pred in predictions if pred['confidence'] > 0.7]
+            confidence_score = len(high_confidence_detections) / len(predictions) if predictions else 0
+            
+            # Combine average confidence with high-confidence ratio
+            model_accuracy = (avg_confidence + confidence_score) / 2
+        
         return {
             'success': True,
             'predictions': predictions,
             'total_detections': len(predictions),
+            'model_accuracy': model_accuracy,
             'annotated_image': annotated_image_b64,
             'message': f'Detected {len(predictions)} cashew kernels with annotations.'
         }
