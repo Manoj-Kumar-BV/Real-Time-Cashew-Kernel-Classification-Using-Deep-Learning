@@ -484,10 +484,13 @@
             const resultContent = document.getElementById('resultContent');
             
             let html = `
-                <img src="${imageData}" alt="Analyzed Image" class="result-image">
                 <h4>Detection Results</h4>
                 <p>Total detections: ${result.total_detections}</p>
             `;
+
+            // Display annotated image if available, otherwise show original
+            const imageToShow = result.annotated_image || imageData;
+            html += `<img src="${imageToShow}" alt="Analyzed Image" class="result-image">`;
 
             if (result.predictions.length > 0) {
                 html += '<div class="predictions">';
