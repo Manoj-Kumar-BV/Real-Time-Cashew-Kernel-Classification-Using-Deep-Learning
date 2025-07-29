@@ -42,8 +42,9 @@ def load_model():
         print(f"❌ Error loading model: {e}")
         # Try direct torch.load as fallback
         try:
-            checkpoint = torch.load('best.pt', map_location='cpu')
-            print("✅ Model loaded with torch.load fallback")
+            # For PyTorch >=2.6, set weights_only=False to allow full model loading
+            checkpoint = torch.load('best.pt', map_location='cpu', weights_only=False)
+            print("✅ Model loaded with torch.load fallback (weights_only=False)")
             return checkpoint
         except Exception as e2:
             print(f"❌ Fallback loading also failed: {e2}")
